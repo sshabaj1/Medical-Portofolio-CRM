@@ -2,7 +2,7 @@ from django.db.models import query
 from django.shortcuts import render, redirect, reverse
 from .models import Ticket
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
-from .forms import TicketModelForm, TicketCreateForm
+from .forms import TicketModelForm,TicketCreateForm
 from django.urls import reverse_lazy
 
 
