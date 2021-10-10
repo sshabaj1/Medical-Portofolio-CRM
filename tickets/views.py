@@ -2,7 +2,7 @@ from django.db.models import query
 from django.shortcuts import render, redirect, reverse
 from .models import Ticket
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
-from .forms import TicketModelForm
+from .forms import TicketModelForm, TicketCreateForm
 from django.urls import reverse_lazy
 
 
@@ -17,7 +17,7 @@ class TicketListView(ListView):
 
 class TicketCreateView(CreateView):
     template_name = 'ticket_create.html'
-    form_class = TicketModelForm
+    form_class = TicketCreateForm
     
     def get_success_url(self):
         return reverse('tickets:ticket-list')

@@ -10,4 +10,7 @@ class Ticket(models.Model):
 
 
     def __str__(self):
-        return f'{self.cl_name} {self.cl_phone}'
+        return f'''
+            {self.cl_name} -
+            {self.ticket_subject}
+            '''

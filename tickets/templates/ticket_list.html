@@ -35,13 +35,13 @@
                 </div>
                 <div class="flex-grow">
                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-                        {{ ticket.cl_name }}</h2>
+                         <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="mt-3 text-indigo-500 inline-flex items-center"> Ticket ID: {{ ticket.id }}</a>
+                        <hr/>
+                        {{ ticket.cl_name }}
+                    </h2>
                     <p class="leading-relaxed text-base">
-                        <strong>
-                            {{ ticket.cl_phone }}
-                            {{ ticket.cl_email}} 
-                        </strong>
-                        {{ticket.ticket_body}}
+                        
+                        {{ticket.ticket_subject}}
                     </p>
                     <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="mt-3 text-indigo-500 inline-flex items-center">
                         View Ticket
