@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ticket.cl_name }}</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    
+</head>
+<body>
+      <section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">Ticket</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ticket.cl_name}}</h1>
+        
+            <div class="flex mb-4">
+                <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
+                    Overview
+                </a>
+                <a  class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                    Reviews
+                </a>
+                <a href='{% url "tickets:ticket-update" ticket.pk %}' class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                    Update
+                </a>
+            </div>
+        <strong>
+            <p class="leading-relaxed mb-4">{{ ticket.ticket_subject }}</p>
+        </strong>    
+        
+        
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Email</span>
+          <span class="ml-auto text-gray-900">{{ticket.cl_email}}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Location</span>
+          <span class="ml-auto text-gray-900">Test Location</span>
+        </div>
+        <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+          <span class="text-gray-500">Phone</span>
+          <span class="ml-auto text-gray-900">{{ ticket.cl_phone }}</span>
+        </div>
+        <br />
+        <strong>
+            <p class="leading-relaxed mb-4">{{ ticket.ticket_subject }}</p>
+        </strong>
+        <br />   
+        <p class="leading-relaxed mb-4">{{ ticket.cl_message }}</p>
+        <div class="flex">
+
+          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href='{% url "tickets:ticket-list" %}'>Back</a></button>
+            
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+    </div>
+  </div>
+</section>
+    
+</body>
+</html>
