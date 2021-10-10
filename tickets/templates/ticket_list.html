@@ -3,232 +3,90 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Tickets</title>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/dashboard_navbar.css' %}">
     <script src="{% static 'js/dashboard_navbar.js' %}"></script>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'><link rel="stylesheet" href="./style.css">
-
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">  
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/extensions/filter-control/bootstrap-table-filter-control.css">
+    
 </head>
 <body>
 <!-- partial:index.partial.html -->
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="navbar-brand navbar-logo" href="{% url 'users:dashboard' %}">
-            Navbar
-        </a>
-        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white">
-            </i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <div class="hori-selector">
-                    <div class="left">
-                    </div>
-                    <div class="right">
-                    </div>
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:dashboard' %}">
-                        <i class="fas fa-tachometer-alt">
-                        </i>
-                        Dashboard
-                    </a>
-                </li>
+            <a class="navbar-brand navbar-logo" href="{% url 'users:dashboard' %}">Navbar</a>
+            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:dashboard' %}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
                     
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tickets:ticket-list' %}">
-                        <i class="far fa-clone">
-                        </i>
-                        Tickets
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);">
-                    `   <i class="far fa-calendar-alt">
-                        </i>
-                        Calendar
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);">
-                        <i class="far fa-chart-bar">
-                        </i>
-                        Charts
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:logout' %}">
-                        <i class="fas fa-sign-out-alt">
-                        </i>
-                        Sing Out
-                    </a>
-                </li>
-            </ul>
-        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tickets:ticket-list' %}"><i class="far fa-clone"></i>Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}"><i class="fas fa-sign-out-alt"></i>Sing Out</a>
+                    </li>
+                </ul>
+            </div>
     </nav>
 <!-- partial -->
-    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
-    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script><script  src="./script.js"></script>
-    <br/>
-    <br/>
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 py-24 mx-auto flex flex-wrap">
-            <div class=" w-full mb-6 py-6 flex justify-between items-center border-b gray-200">
-                <div>
-                    <h1 class="text-4xl text-gray-800"> Tickets </h1>
-                </div>
-                <div>
-                    <a class='text-gray-500 hover:text-blue-500' href='{% url "tickets:ticket-create" %}'>Create a new Ticket</a>
-                </div>
-            </div>
-        
-            <div class="flex flex-wrap -m-4">
-                {% for ticket in tickets %}
-                <div class="p-4 lg:w-1/2 md:w-full">
-                    <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
-                        <div class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                            </svg>
-                        </div>
-                        <div class="flex-grow">
-                            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-                            <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="mt-3 text-indigo-500 inline-flex items-center"> Ticket ID: {{ ticket.id }}</a>
-                            <hr/>
-                            {{ ticket.cl_name }}
-                            </h2>
-                            <p class="leading-relaxed text-base">
-                        
-                            {{ticket.ticket_subject}}
-                            </p>
-                            <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="mt-3 text-indigo-500 inline-flex items-center">
-                                View Ticket
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+  <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
     
+    <div class="container">
+                <table id="table"
+                    data-toggle="table"
+                    data-filter-control="true"
+                    data-show-search-clear-button="true"
+                    data-sortable="true"
+                    classes="table-sm"
+                    data-pagination="true"
+                    data-show-columns="true"
+                    data-show-columns-toggle-all="true"
+                    class="table-responsive">
+                    <thead>
+                        <tr>
+                            
+                            <th data-field="columnA" data-filter-control="input" data-sortable="true">Ticket ID</th>
+                            <th data-field="columnB" data-filter-control="input" data-sortable="true">Full Name</th>
+                            <th data-field="columnC" data-filter-control="input" data-sortable="true">Ticket Subject</th>
+                            <th data-field="columnD" data-filter-control="input" data-sortable="true">Created Date</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in tickets %}
+                        <tr>
+                            <!--special characters and spaces not allowed in data-field name-->
+                            <td> <a href="{% url 'tickets:ticket-detail' ticket.pk %}">{{ ticket.id }}</a> </td>
+                            <td> <a href="{% url 'tickets:ticket-detail' ticket.pk %}">{{ticket.cl_name}}</a> </td>
+                            <td> {{ticket.ticket_subject}} </td>
+                            <td> Date Created </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 </body>
 </html>
-
-
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/dashboard_navbar.css' %}">
-    <script src="{% static 'js/dashboard_navbar.js' %}"></script>
-    <title>Dashboard</title>
-
-</head>
-<body>
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars text-white"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    
-    
-    
-</html> {% endcomment %}
-
-{% comment %} 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickets</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    
-</head>
-<body>
-    
-    
-
-    <section class="text-gray-700 body-font">
-  <div class="container px-5 py-24 mx-auto flex flex-wrap">
-    <div class=" w-full mb-6 py-6 flex justify-between items-center border-b gray-200">
-        <div>
-            <h1 class="text-4xl text-gray-800"> Tickets </h1>
-        </div>
-        <div>
-            <a class='text-gray-500 hover:text-blue-500' href='{% url "tickets:ticket-create" %}'>Create a new Ticket</a>
-        </div>
-    </div>
-        
-    <div class="flex flex-wrap -m-4">
-        {% for ticket in tickets %}
-      <div class="p-4 lg:w-1/2 md:w-full">
-            <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
-                <div class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                </div>
-                <div class="flex-grow">
-                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-                         <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="mt-3 text-indigo-500 inline-flex items-center"> Ticket ID: {{ ticket.id }}</a>
-                        <hr/>
-                        {{ ticket.cl_name }}
-                    </h2>
-                    <p class="leading-relaxed text-base">
-                        
-                        {{ticket.ticket_subject}}
-                    </p>
-                    <a href='{% url "tickets:ticket-detail" ticket.pk %}' class="mt-3 text-indigo-500 inline-flex items-center">
-                        View Ticket
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-      </div>
-        {% endfor %}
-    </div>
-  </div>
-</section>
-
-</body>
-</html> {% endcomment %}
-    
-
-    
-    
