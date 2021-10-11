@@ -634,7 +634,7 @@
 
          <div class="contact-section">
             <div class="form-contant">
-               <form  method="POST">
+               <form action="{% url 'tickets:ticket-create' %}?from=home" method="POST">
                   {% csrf_token %}
                   <div class="row">
                      <div class="col-md-6">
@@ -654,7 +654,7 @@
                      </div>
                      <div class="col-md-6">
                         <div class="form-group in_email">
-                           <input type="text" name="ticket_subjet" class="form-control" id="subject" placeholder="Subject" required="required">
+                           <input type="text" name="ticket_subject" class="form-control" id="subject" placeholder="Subject" required="required">
                         </div>
                      </div>
                      <div class="col-md-12">

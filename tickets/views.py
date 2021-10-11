@@ -20,7 +20,20 @@ class TicketCreateView(CreateView):
     form_class = TicketCreateForm
     
     def get_success_url(self):
-        return reverse('tickets:ticket-list')
+        print("self.request.GET:", self.request.GET.get("from"))
+        coming_from = self.request.GET.get("from")
+        url_name = 'tickets:ticket-list'
+        if coming_from == "home":
+            url_name = "website:landind_page"
+        return reverse(url_name)
+
+    def form_valid(self, form):
+        print("in form_valid")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("in form_invalid")
+        return super().form_invalid(form)
 
 
 class TicketDetailView(DetailView):

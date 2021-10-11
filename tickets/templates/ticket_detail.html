@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +8,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ ticket.cl_name }}</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard_navbar.css' %}">
+    <script src="{% static 'js/dashboard_navbar.js' %}"></script>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
     
 </head>
 <body>
+
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+            <a class="navbar-brand navbar-logo" href="{% url 'users:dashboard' %}">Navbar</a>
+            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:dashboard' %}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tickets:ticket-list' %}"><i class="far fa-clone"></i>Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tickets:ticket-create' %}"><i class="fas fa-plus"></i>Create a ticket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}"><i class="fas fa-sign-out-alt"></i>Sing Out</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+
+
       <section class="text-gray-600 body-font overflow-hidden">
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -27,9 +63,7 @@
                     Update
                 </a>
             </div>
-        <strong>
-            <p class="leading-relaxed mb-4">{{ ticket.ticket_subject }}</p>
-        </strong>    
+           
         
         
         <div class="flex border-t border-gray-200 py-2">
@@ -44,10 +78,11 @@
           <span class="text-gray-500">Phone</span>
           <span class="ml-auto text-gray-900">{{ ticket.cl_phone }}</span>
         </div>
+        <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+          <span class="text-gray-500">Subject</span>
+          <span class="ml-auto text-gray-900">{{ ticket.ticket_subject }}</span>
+        </div>
         <br />
-        <strong>
-            <p class="leading-relaxed mb-4">{{ ticket.ticket_subject }}</p>
-        </strong>
         <br />   
         <p class="leading-relaxed mb-4">{{ ticket.cl_message }}</p>
         <div class="flex">
