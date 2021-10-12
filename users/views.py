@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth.views import LoginView   
 from django.contrib.auth import logout
 from django.contrib.messages import constants as messages
+from django.urls import reverse_lazy
+from .forms import UserCreateForm
 
 
 class DashboardView(TemplateView):
@@ -19,6 +21,12 @@ class UserLoginView(LoginView):
 def logout_request(request):
     logout(request)
     return redirect("users:login")
+
+
+class UserCreateView(CreateView):
+    form_class = UserCreateForm
+    template_name = 'create_user.html'
+    success_url = reverse_lazy('users:dashboard')
     
 
 
